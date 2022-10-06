@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+    <h1>Conhecendo o AJAX</h1>
+    <div id="teste">
+        <p>Um conteúdo inicial</p>
+    </div>
+    <button id="botao">Clique aqui</button>
+    
+    <hr>
+    <br><br>
+    <input type="text" placeholder="Digite o CEP" id="cep"><br><br>
+    <input type="text" placeholder="Logradouro" id="logradouro"><br><br>
+    <input type="text" placeholder="Cidade" id="localidade"><br><br>
+    <input type="text" placeholder="UF" id="uf"><br>
+
+    <script>
+        $(document).ready(function(){
+            // CLICK
+            // $('#botao').click(function() {
+            //     $('#teste').load('teste.txt');
+            // })
+
+            // MOUSEOVER
+            // $('h1').mouseover(function() {
+            //     $('#teste').load('teste.txt');
+            // })
+
+            // requisição ajax GET
+            $('#cep').blur(function() {
+                let cep = $(this).val();
+
+                $.get(`https://viacep.com.br/ws/${cep}/json/`, function(dados, status){
+                    $('#logradouro').val(dados.logradouro)
+                    $('#localidade').val(dados.localidade)
+                    $('#cidade').val(dados.cidade)
+                    $('#uf').val(dados.uf)
+                });
+
+            })
+        })
+    </script>
+</body>
+</html>

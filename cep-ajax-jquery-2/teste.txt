@@ -1,0 +1,2 @@
+<h2>Uhul, como ajax é legal</h2>
+<p>Este conteúdo foi puxado de um arquivo TXT externo</p>
